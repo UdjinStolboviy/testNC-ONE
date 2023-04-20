@@ -1,0 +1,179 @@
+{
+  "data": [
+     {
+    "id": 1,
+    "studentName": "John Smith",
+    "courseName": "Introduction to Programming",
+    "moduleName": "Variables and Data Types",
+    "lessonName": "Primitive Data Types",
+    "progress": 80
+  },
+  {
+    "id": 2,
+    "studentName": "Sarah Johnson",
+    "courseName": "Web Development",
+    "moduleName": "Front-end Development",
+    "lessonName": "HTML and CSS",
+    "progress": 65
+  },
+  {
+    "id": 3,
+    "studentName": "David Lee",
+    "courseName": "Database Management",
+    "moduleName": "Front-end Development",
+    "lessonName": "SQL Basics",
+    "progress": 90
+  },
+  {
+    "id": 4,
+    "studentName": "Emily Davis",
+    "courseName": "Machine Learning",
+    "moduleName": "Deep Learning",
+    "lessonName": "Convolutional Neural Networks",
+    "progress": 50
+  },
+  {
+    "id": 5,
+    "studentName": "Michael Chen",
+    "courseName": "Artificial Intelligence",
+    "moduleName": "Natural Language Processing",
+    "lessonName": "Word Embeddings",
+    "progress": 75
+  },
+  {
+    "id": 6,
+    "studentName": "Karen Brown",
+    "courseName": "Mobile App Development",
+    "moduleName": "Android Development",
+    "lessonName": "Activities and Intents",
+    "progress": 85
+  },
+  {
+    "id": 7,
+    "studentName": "Brian Taylor",
+    "courseName": "Cloud Computing",
+    "moduleName": "AWS",
+    "lessonName": "EC2 Instances",
+    "progress": 60
+  },
+  {
+    "id": 8,
+    "studentName": "Ashley Kim",
+    "courseName": "Data Science",
+    "moduleName": "Data Visualization",
+    "lessonName": "Matplotlib",
+    "progress": 95
+  },
+  {
+    "id": 9,
+    "studentName": "Thomas Johnson",
+    "courseName": "Cybersecurity",
+    "moduleName": "Network Security",
+    "lessonName": "Firewalls",
+    "progress": 70
+  },
+  {
+    "id": 10,
+    "studentName": "Jennifer Lee",
+    "courseName": "Blockchain",
+    "moduleName": "Smart Contracts",
+    "lessonName": "Solidity",
+    "progress": 80
+  },
+  {
+    "id": 11,
+    "studentName": "Adam Wilson",
+    "courseName": "Introduction to Programming",
+    "moduleName": "Control Flow",
+    "lessonName": "Loops",
+    "progress": 40
+  },
+  {
+    "id": 12,
+    "studentName": "Ella Rodriguez",
+    "courseName": "Web Development",
+    "moduleName": "Back-end Development",
+    "lessonName": "REST APIs",
+    "progress": 70
+  },
+  {
+    "id": 13,
+    "studentName": "Jason Martinez",
+    "courseName": "Database Management",
+    "moduleName": "NoSQL Databases",
+    "lessonName": "MongoDB",
+    "progress": 85
+  },
+    {"id": 14,
+      "studentName": "John Smith",
+      "courseName": "Machine Learning",
+      "moduleName": "Front-end Development",
+      "lessonName": "Equations",
+      "progress": 75
+    },
+    {
+      "id": 14,
+      "studentName": "Mary Johnson",
+      "courseName": "History",
+      "moduleName": "World War II",
+      "lessonName": "Causes",
+      "progress": 60
+    },
+    {"id": 15,
+      "studentName": "James Davis",
+      "courseName": "Machine Learning",
+      "moduleName": "Biology",
+      "lessonName": "Cells",
+      "progress": 30
+    },
+    {"id": 16,
+      "studentName": "Linda Wilson",
+      "courseName": "Machine Learning",
+      "moduleName": "Front-end Development",
+      "lessonName": "Punctuation",
+      "progress": 80
+    },
+    {"id": 17,
+      "studentName": "Adam Wilson",
+      "courseName": "Data Science",
+      "moduleName": "Painting",
+      "lessonName": "Color Theory",
+      "progress": 50
+    },
+    {"id": 18,
+      "studentName": "Karen Lee",
+      "courseName": "Data Science",
+      "moduleName": "Piano",
+      "lessonName": "Scales",
+      "progress": 70
+    },
+    {"id": 19,
+      "studentName": "Michael Taylor",
+      "courseName": "Geography",
+      "moduleName": "World Capitals",
+      "lessonName": "Europe",
+      "progress": 85
+    },
+    {"id": 20,
+      "studentName": "Sarah Davis",
+      "courseName": "Web Development",
+      "moduleName": "Fitness",
+      "lessonName": "Running",
+      "progress": 65
+    },
+    {"id": 21,
+      "studentName": "David Martin",
+      "courseName": "Computer Science",
+      "moduleName": "Programming",
+      "lessonName": "JavaScript",
+      "progress": 95
+    },
+    {"id": 22,
+      "studentName": "Jennifer Jackson",
+      "courseName": "Web Development",
+      "moduleName": "Front-end Development",
+      "lessonName": "Vocabulary",
+      "progress": 10
+    }
+  ]
+}
