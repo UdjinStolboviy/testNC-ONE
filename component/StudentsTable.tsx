@@ -10,12 +10,11 @@ import {
 import { ProgressCircle } from "@react-spectrum/progress";
 import { Button } from "@react-spectrum/button";
 import {
-  ActionButton,
   ActionGroup,
-  ButtonGroup,
-  ComboBox,
   Flex,
   Item,
+  useAsyncList,
+  useCollator,
 } from "@adobe/react-spectrum";
 
 const studentsData = require("../data/data.json");
@@ -30,18 +29,6 @@ type Student = {
 
 const PAGE_SIZE = 10;
 
-const getSortedData = (data: Student[], sortBy: string, sortDesc: boolean) => {
-  return data.sort((a: any, b: any) => {
-    if (a[sortBy] < b[sortBy]) {
-      return sortDesc ? 1 : -1;
-    } else if (a[sortBy] > b[sortBy]) {
-      return sortDesc ? -1 : 1;
-    } else {
-      return 0;
-    }
-  });
-};
-
 const getPaginatedData = (data: Student[], page: number) => {
   const start = (page - 1) * PAGE_SIZE;
   const end = start + PAGE_SIZE;
@@ -49,66 +36,65 @@ const getPaginatedData = (data: Student[], page: number) => {
 };
 
 const StudentsTable = () => {
-  const [sort, setSort] = useState({ sortBy: "", sortDesc: false });
   const [page, setPage] = useState(1);
 
-  const handleSort = (sortBy: string) => {
-    if (sort.sortBy === sortBy) {
-      setSort({ ...sort, sortDesc: !sort.sortDesc });
-    } else {
-      setSort({ sortBy, sortDesc: false });
-    }
-  };
+  let collator = useCollator({ numeric: true });
 
-  const sortedData = getSortedData(
-    studentsData.data,
-    sort.sortBy,
-    sort.sortDesc
-  );
-  const paginatedData = getPaginatedData(sortedData, page);
+  let list = useAsyncList<Student>({
+    load() {
+      return {
+        items: studentsData.data,
+      };
+    },
+    async sort({
+      items,
+      sortDescriptor,
+    }: {
+      items: Student[];
+      sortDescriptor: any;
+    }) {
+      return {
+        items: items.sort((a: any, b: any) => {
+          let first = a[sortDescriptor.column];
+          let second = b[sortDescriptor.column];
+          let cmp = collator.compare(first, second);
+          if (sortDescriptor.direction === "descending") {
+            cmp *= -1;
+          }
+          return cmp;
+        }),
+      };
+    },
+  });
+  const paginatedData = getPaginatedData(list.items, page);
 
   return (
     <Flex height="size-10000" width="100%" direction="column" gap="size-100">
-      <TableView aria-label="Students Table" minWidth={320}>
+      <TableView
+        aria-label="Students Table"
+        minWidth={320}
+        sortDescriptor={list.sortDescriptor}
+        onSortChange={list.sort}
+      >
         <TableHeader>
-          <Column width={230}>
-            <Button variant="primary" onPress={() => handleSort("studentName")}>
-              {"Student name"}
-              <p>&uarr;</p>
-              <p>&darr;</p>
-            </Button>
+          <Column width={230} key="studentName" allowsSorting>
+            Student name
           </Column>
-          <Column width={230}>
-            <Button variant="primary" onPress={() => handleSort("courseName")}>
-              Course name
-              <p>&uarr;</p>
-              <p>&darr;</p>
-            </Button>
+          <Column width={230} key="courseName" allowsSorting>
+            Course name
           </Column>
-          <Column width={230}>
-            <Button variant="primary" onPress={() => handleSort("moduleName")}>
-              Module name
-              <p>&uarr;</p>
-              <p>&darr;</p>
-            </Button>
+          <Column width={230} key="moduleName" allowsSorting>
+            Module name
           </Column>
-          <Column width={230}>
-            <Button variant="primary" onPress={() => handleSort("lessonName")}>
-              Lesson name
-              <p>&uarr;</p>
-              <p>&darr;</p>
-            </Button>
+          <Column width={230} key="lessonName" allowsSorting>
+            Lesson name
           </Column>
-          <Column width={230}>
-            <Button variant="primary" onPress={() => handleSort("progress")}>
-              Progress
-              <p>&uarr;</p>
-              <p>&darr;</p>
-            </Button>
+          <Column width={230} key="progress" allowsSorting>
+            Progress
           </Column>
           <Column width={230}>Actions</Column>
         </TableHeader>
-        <TableBody>
+        <TableBody items={list.items} loadingState={list.loadingState}>
           {paginatedData.map((student) => (
             <Row key={student.studentName}>
               <Cell>{student.studentName}</Cell>
